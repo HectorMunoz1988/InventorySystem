@@ -1,0 +1,159 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    Inicio - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Gestiona tu inventario de forma rápida y sencilla
+        </h1>
+
+        <p class="hero-description">
+            Consulta tus productos, controla el stock, registra
+            entradas y salidas desde un mismo lugar.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="{% url 'product_list' %}"
+                class="button button-secondary"
+            >
+                Ver productos
+            </a>
+
+            <a
+                href="{% url 'supplier_list' %}"
+                class="button button-secondary"
+            >
+                Ver proveedores
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% if low_stock_products %}
+
+<section class="low-stock-alert">
+    
+    <h2 class="low-stock-title">
+        <span class="low-stock-icon">⚠</span>
+        Productos con stock bajo
+    </h2>
+
+    <p>
+        Los siguientes productos han alcanzado su stock mínimo
+        y necesitan reposición.
+    </p>
+
+
+    <div class="low-stock-list">
+
+        {% for product in low_stock_products %}
+
+            <a
+                href="{% url 'product_detail' product.id %}"
+                class="low-stock-item"
+            >
+
+                <strong>
+                    {{ product.name }}
+                </strong>
+
+                <span>
+                    Stock: {{ product.stock }}
+                    / Mínimo: {{ product.minimum_stock }}
+                </span>
+
+            </a>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<section class="home-section">
+
+    <header class="section-header">
+
+        <h2>
+            Acceso rápido
+        </h2>
+
+    </header>
+
+
+    <div class="features-grid">
+
+        <article class="feature-card">
+
+            <h3>
+                Productos
+            </h3>
+
+            <p>
+                Consulta el stock, proveedor y categoría de cada producto.
+            </p>
+
+            <a href="{% url 'product_list' %}">
+                Ver productos →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <h3>
+                Proveedores
+            </h3>
+
+            <p>
+                Consulta los proveedores y los productos que suministran.
+            </p>
+
+            <a href="{% url 'supplier_list' %}">
+                Ver proveedores →
+            </a>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <h3>
+                Categorías
+            </h3>
+
+            <p>
+                Organiza y consulta los productos según su categoría.
+            </p>
+
+            <a href="{% url 'category_list' %}">
+                Ver categorías →
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+{% endblock %}

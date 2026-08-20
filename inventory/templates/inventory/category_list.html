@@ -1,0 +1,57 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    Categorías - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>
+        Categorías
+    </h1>
+
+    <p>
+        Consulta las categorías de productos disponibles.
+    </p>
+
+</section>
+
+
+<section class="categories-list">
+
+    {% for category in categories %}
+
+        <a
+            href="{% url 'category_detail' category.id %}"
+            class="category-card"
+        >
+
+            <div class="category-card-content">
+
+                <h2>
+                    {{ category.name }}
+                </h2>
+
+            </div>
+
+        </a>
+
+    {% empty %}
+
+        <div class="empty-state">
+
+            <p>
+                No hay categorías registradas.
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

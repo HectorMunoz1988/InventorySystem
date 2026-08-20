@@ -1,0 +1,75 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    Proveedores - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>
+        Proveedores
+    </h1>
+
+    <p>
+        Consulta los proveedores registrados y sus productos.
+    </p>
+
+</section>
+
+
+<section class="suppliers-list">
+
+    {% for supplier in suppliers %}
+
+        <a
+            href="{% url 'supplier_detail' supplier.id %}"
+            class="supplier-card"
+        >
+
+            <div class="supplier-card-content">
+
+                <h2>
+                    {{ supplier.name }}
+                </h2>
+
+
+                {% if supplier.email %}
+
+                    <p>
+                        {{ supplier.email }}
+                    </p>
+
+                {% endif %}
+
+
+                {% if supplier.phone %}
+
+                    <p>
+                        {{ supplier.phone }}
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </a>
+
+    {% empty %}
+
+        <div class="empty-state">
+
+            <p>
+                No hay proveedores registrados.
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

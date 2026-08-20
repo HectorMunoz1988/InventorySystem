@@ -1,0 +1,213 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    Productos - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-header">
+
+    {% if query %}
+
+        <h1>
+            Resultados para "{{ query }}"
+        </h1>
+
+    {% else %}
+
+        <h1>
+            Productos
+        </h1>
+
+    {% endif %}
+
+</section>
+
+
+<section class="search-section">
+
+    <form method="get" class="search-form">
+
+        <label for="search">
+            Buscar productos
+        </label>
+
+        <input
+            type="text"
+            id="search"
+            name="q"
+            placeholder="Nombre o descripción..."
+            value="{{ query }}"
+        >
+
+
+        <label for="supplier">
+            Proveedor
+        </label>
+
+        <select id="supplier" name="supplier">
+
+            <option value="">
+                Todos los proveedores
+            </option>
+
+            {% for supplier in suppliers %}
+
+                <option
+                    value="{{ supplier.id }}"
+                    {% if selected_supplier == supplier.id|stringformat:"s" %}
+                        selected
+                    {% endif %}
+                >
+                    {{ supplier.name }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <label for="category">
+            Categoría
+        </label>
+
+        <select id="category" name="category">
+
+            <option value="">
+                Todas las categorías
+            </option>
+
+            {% for category in categories %}
+
+                <option
+                    value="{{ category.id }}"
+                    {% if selected_category == category.id|stringformat:"s" %}
+                        selected
+                    {% endif %}
+                >
+                    {{ category.name }}
+                </option>
+
+            {% endfor %}
+
+        </select>
+
+
+        <button type="submit">
+            Buscar
+        </button>
+
+    </form>
+
+</section>
+
+
+<section class="products-list">
+
+    {% for product in products %}
+
+        <a
+            href="{% url 'product_detail' product.id %}"
+            class="product-card"
+        >
+
+            <div class="product-card-content">
+
+                <h2>
+                    {{ product.name }}
+                </h2>
+
+
+                {% if product.description %}
+
+                    <p class="product-description">
+                        {{ product.description }}
+                    </p>
+
+                {% endif %}
+
+
+                <p>
+
+                    <strong>Proveedor:</strong>
+
+                    {{ product.supplier.name }}
+
+                </p>
+
+
+                <p>
+
+                    <strong>Categoría:</strong>
+
+                    {{ product.category.name }}
+
+                </p>
+
+
+                <p>
+
+                    <strong>Stock:</strong>
+
+                    {{ product.stock }}
+
+                </p>
+
+
+                <p>
+
+                    <strong>Stock mínimo:</strong>
+
+                    {{ product.minimum_stock }}
+
+                </p>
+
+
+                {% if product.stock <= product.minimum_stock %}
+
+                    <span class="stock-status low">
+                        Stock bajo
+                    </span>
+
+                {% else %}
+
+                    <span class="stock-status sufficient">
+                        Stock suficiente
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        </a>
+
+
+    {% empty %}
+
+        <div class="empty-state">
+
+            {% if query %}
+
+                <p>
+                    No se encontraron productos para
+                    "{{ query }}".
+                </p>
+
+            {% else %}
+
+                <p>
+                    No hay productos registrados.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    {{ category.name }} - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="category-detail">
+
+    <header class="page-header">
+
+        <h1>
+            {{ category.name }}
+        </h1>
+
+    </header>
+
+
+    <section class="category-products">
+
+        <h2>
+            Productos
+        </h2>
+
+
+        <div class="products-list">
+
+            {% for product in products %}
+
+                <a
+                    href="{% url 'product_detail' product.id %}"
+                    class="product-card"
+                >
+
+                    <div class="product-card-content">
+
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+
+
+                        {% if product.description %}
+
+                            <p class="product-description">
+                                {{ product.description }}
+                            </p>
+
+                        {% endif %}
+
+
+                        <p>
+                            <strong>Proveedor:</strong>
+                            {{ product.supplier.name }}
+                        </p>
+
+
+                        <p>
+                            <strong>Stock:</strong>
+                            {{ product.stock }}
+                        </p>
+
+
+                        {% if product.stock <= product.minimum_stock %}
+
+                            <span class="stock-status low">
+                                Stock bajo
+                            </span>
+
+                        {% else %}
+
+                            <span class="stock-status sufficient">
+                                Stock suficiente
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </a>
+
+            {% empty %}
+
+                <div class="empty-state">
+
+                    <p>
+                        Esta categoría no tiene productos registrados.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <div class="back-link">
+
+        <a href="{% url 'category_list' %}">
+            ← Volver a categorías
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

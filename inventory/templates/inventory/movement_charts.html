@@ -1,0 +1,330 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    Movimientos - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-header">
+
+    <h1>
+        Movimientos de stock
+    </h1>
+
+    <p>
+        Consulta las entradas, salidas y el stock final de cada producto.
+    </p>
+
+</section>
+
+
+<section class="chart-card">
+
+    <div class="chart-container">
+
+        <canvas id="movementChart"></canvas>
+
+    </div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+    const chartData = [
+
+        {% for item in chart_data %}
+
+            {
+                date: "{{ item.date }}",
+                product: "{{ item.product|escapejs }}",
+
+                entries: {{ item.entries }},
+                outputs: {{ item.outputs }},
+                stock: {{ item.stock }},
+                minimumStock: {{ item.minimum_stock }},
+
+                lowStock: {{ item.low_stock|yesno:"true,false" }}
+            },
+
+        {% endfor %}
+
+    ];
+
+
+    const labels = [];
+    const entries = [];
+    const outputs = [];
+    const stocks = [];
+
+    const backgroundColors = [];
+    const borderColors = [];
+
+
+    chartData.forEach(item => {
+
+        labels.push(
+            item.date + " — " + item.product
+        );
+
+        entries.push(item.entries);
+
+        outputs.push(item.outputs);
+
+        stocks.push(item.stock);
+
+        if (item.lowStock) {
+
+            backgroundColors.push('#FACC15');
+            borderColors.push('#EF4444');
+
+        } else {
+
+            backgroundColors.push('#22C55E');
+            borderColors.push('#22C55E');
+
+        }
+
+    });
+
+    const barValuePlugin = {
+
+        id: 'barValuePlugin',
+
+
+        afterDatasetsDraw(chart) {
+
+            const { ctx } = chart;
+
+            ctx.save();
+
+            ctx.fillStyle = '#22242A';
+
+            ctx.font = 'bold 14px Arial';
+
+            ctx.textAlign = 'center';
+
+            ctx.textBaseline = 'middle';
+
+
+            chart.data.datasets.forEach(
+                (dataset, datasetIndex) => {
+
+                    if (!chart.isDatasetVisible(datasetIndex)) {
+                        return;
+                    }
+
+                    const meta =
+                        chart.getDatasetMeta(datasetIndex);
+
+                    meta.data.forEach(
+                        (bar, index) => {
+
+                            const value =
+                                dataset.data[index];
+
+                            if (value === 0) {
+                                return;
+                            }
+
+                            ctx.fillText(
+                                value,
+                                bar.x - (bar.width / 2),
+                                bar.y
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+
+            ctx.restore();
+
+        }
+
+    };
+
+
+    const ctx = document
+        .getElementById('movementChart')
+        .getContext('2d');
+
+
+    new Chart(ctx, {
+
+        type: 'bar',
+
+
+        data: {
+
+            labels: labels,
+
+
+            datasets: [
+
+                {
+                    label: 'Entradas',
+
+                    data: entries,
+
+                    backgroundColor: '#60A5FA',
+
+                    borderColor: '#60A5FA',
+
+                    borderWidth: 1
+                },
+
+
+                {
+                    label: 'Salidas',
+
+                    data: outputs,
+
+                    backgroundColor: '#EF4444',
+
+                    borderColor: '#EF4444',
+
+                    borderWidth: 1
+                },
+
+
+                {
+                    label: 'Stock final',
+
+                    data: stocks,
+
+                    backgroundColor: backgroundColors,
+
+                    borderColor: borderColors,
+
+                    borderWidth: 2
+                }
+
+            ]
+
+        },
+
+
+        options: {
+
+            indexAxis: 'y',
+
+            responsive: true,
+
+            maintainAspectRatio: false,
+
+
+            scales: {
+
+                x: {
+
+                    beginAtZero: true,
+
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Cantidad de unidades',
+
+                        color: '#E8EAF2'
+
+                    },
+
+
+                    ticks: {
+
+                        color: '#E8EAF2'
+
+                    }
+
+                },
+
+
+                y: {
+
+                    title: {
+
+                        display: true,
+
+                        text: 'Fecha y producto',
+
+                        color: '#E8EAF2'
+
+                    },
+
+
+                    ticks: {
+
+                        color: '#E8EAF2'
+
+                    }
+
+                }
+
+            },
+
+
+            plugins: {
+
+                legend: {
+
+                    display: true,
+
+
+                    labels: {
+
+                        color: '#E8EAF2'
+
+                    }
+
+                },
+
+
+                tooltip: {
+
+                    callbacks: {
+
+                        label: function(context) {
+
+                            return (
+
+                                context.dataset.label +
+
+                                ': ' +
+
+                                context.raw +
+
+                                ' unidades'
+
+                            );
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        },
+
+        plugins: [
+
+            barValuePlugin
+
+        ]
+
+    });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    {{ product.name }} - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="product-detail">
+
+    <header class="product-detail-header">
+
+        <h1>
+            {{ product.name }}
+        </h1>
+
+        <p class="product-description">
+            {{ product.description }}
+        </p>
+
+    </header>
+
+
+    <section class="product-information">
+
+        <h2>
+            Información del producto
+        </h2>
+
+
+        <dl>
+
+            <dt>
+                Proveedor
+            </dt>
+
+            <dd>
+                <a href="{% url 'supplier_detail' product.supplier.id %}">
+                    {{ product.supplier.name }}
+                </a>
+            </dd>
+
+
+            <dt>
+                Categoría
+            </dt>
+
+            <dd>
+                <a href="{% url 'category_detail' product.category.id %}">
+                    {{ product.category.name }}
+                </a>
+            </dd>
+
+
+            <dt>
+                Stock actual
+            </dt>
+
+            <dd>
+                {{ product.stock }}
+            </dd>
+
+
+            <dt>
+                Stock mínimo
+            </dt>
+
+            <dd>
+                {{ product.minimum_stock }}
+            </dd>
+
+
+            <dt>
+                Estado
+            </dt>
+
+            <dd>
+
+                {% if product.stock <= product.minimum_stock %}
+
+                    <span class="stock-status low">
+                        Stock bajo
+                    </span>
+
+                {% else %}
+
+                    <span class="stock-status sufficient">
+                        Stock suficiente
+                    </span>
+
+                {% endif %}
+
+            </dd>
+
+        </dl>
+
+    </section>
+
+
+    <section class="product-actions">
+
+        <h2>
+            Movimiento de stock
+        </h2>
+
+        <p>
+            Registra una entrada o salida de unidades de este producto.
+        </p>
+
+        <a
+            href="{% url 'create_movement' product.id %}"
+            class="button"
+        >
+            Registrar movimiento
+        </a>
+
+    </section>
+
+
+    <section class="stock-movements">
+
+        <h2>
+            Historial de movimientos
+        </h2>
+
+
+        {% for movement in movements %}
+
+            <article class="movement-card">
+
+                <div>
+
+                    <strong>
+                        {{ movement.get_movement_type_display }}
+                    </strong>
+
+                    <p>
+                        Cantidad: {{ movement.quantity }}
+                    </p>
+
+                    <p>
+                        Fecha: {{ movement.date }}
+                    </p>
+
+                </div>
+
+            </article>
+
+        {% empty %}
+
+            <div class="empty-state">
+
+                <p>
+                    Todavía no hay movimientos registrados para este producto.
+                </p>
+
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+
+    <div class="back-link">
+
+        <a href="{% url 'product_list' %}">
+            ← Volver a productos
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends 'inventory/base.html' %}
+
+
+{% block title %}
+    {{ supplier.name }} - Inventory System
+{% endblock %}
+
+
+{% block content %}
+
+<section class="supplier-detail">
+
+    <header class="page-header">
+
+        <h1>
+            {{ supplier.name }}
+        </h1>
+
+    </header>
+
+
+    {% if supplier.email %}
+
+        <p>
+            <strong>Email:</strong>
+            {{ supplier.email }}
+        </p>
+
+    {% endif %}
+
+
+    {% if supplier.phone %}
+
+        <p>
+            <strong>Teléfono:</strong>
+            {{ supplier.phone }}
+        </p>
+
+    {% endif %}
+
+
+    <section class="supplier-products">
+
+        <h2>
+            Productos
+        </h2>
+
+
+        <div class="products-list">
+
+            {% for product in products %}
+
+                <a
+                    href="{% url 'product_detail' product.id %}"
+                    class="product-card"
+                >
+
+                    <div class="product-card-content">
+
+                        <h3>
+                            {{ product.name }}
+                        </h3>
+
+
+                        {% if product.description %}
+
+                            <p class="product-description">
+                                {{ product.description }}
+                            </p>
+
+                        {% endif %}
+
+
+                        <p>
+                            <strong>Stock:</strong>
+                            {{ product.stock }}
+                        </p>
+
+
+                        <p>
+                            <strong>Categoría:</strong>
+                            {{ product.category.name }}
+                        </p>
+
+
+                        {% if product.stock <= product.minimum_stock %}
+
+                            <span class="stock-status low">
+                                Stock bajo
+                            </span>
+
+                        {% else %}
+
+                            <span class="stock-status sufficient">
+                                Stock suficiente
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </a>
+
+            {% empty %}
+
+                <div class="empty-state">
+
+                    <p>
+                        Este proveedor no tiene productos registrados.
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <div class="back-link">
+
+        <a href="{% url 'supplier_list' %}">
+            ← Volver a proveedores
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
