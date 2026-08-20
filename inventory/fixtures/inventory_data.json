@@ -1,0 +1,679 @@
+[
+{
+  "model": "inventory.supplier",
+  "pk": 1,
+  "fields": {
+    "name": "Dunder Mifflin",
+    "email": "sales@dundermifflin.com",
+    "phone": "976 530 082"
+  }
+},
+{
+  "model": "inventory.supplier",
+  "pk": 2,
+  "fields": {
+    "name": "Stark Industries",
+    "email": "suppliers@starkindustries.com",
+    "phone": "976 641 205"
+  }
+},
+{
+  "model": "inventory.supplier",
+  "pk": 3,
+  "fields": {
+    "name": "Alchemax",
+    "email": "research@alchemax.com",
+    "phone": "976 782 314"
+  }
+},
+{
+  "model": "inventory.supplier",
+  "pk": 4,
+  "fields": {
+    "name": "Planet Express",
+    "email": "deliveries@planetexpress.com",
+    "phone": "976 415 629"
+  }
+},
+{
+  "model": "inventory.supplier",
+  "pk": 5,
+  "fields": {
+    "name": "Duff Brewery",
+    "email": "orders@duffbrewery.com",
+    "phone": "976 903 147"
+  }
+},
+{
+  "model": "inventory.supplier",
+  "pk": 6,
+  "fields": {
+    "name": "Weyland-Yutani",
+    "email": "procurement@weyland-yutani.com",
+    "phone": "976 258 436"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 1,
+  "fields": {
+    "name": "Material de Oficina"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 2,
+  "fields": {
+    "name": "Electrónica y Tecnología"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 3,
+  "fields": {
+    "name": "Investigación y Laboratorio"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 4,
+  "fields": {
+    "name": "Transporte y Logística"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 5,
+  "fields": {
+    "name": "Bebidas y Alimentación"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 6,
+  "fields": {
+    "name": "Equipamiento Industrial"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 7,
+  "fields": {
+    "name": "Seguridad"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 8,
+  "fields": {
+    "name": "Almacenamiento"
+  }
+},
+{
+  "model": "inventory.category",
+  "pk": 9,
+  "fields": {
+    "name": "Energía"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 1,
+  "fields": {
+    "name": "Papel A4 Dunder Mifflin Premium",
+    "description": "Resma de 500 hojas de papel blanco A4 para impresión y documentación de oficina",
+    "supplier": 1,
+    "category": 1,
+    "stock": 12,
+    "minimum_stock": 10,
+    "created_at": "2026-08-16T04:10:52.547Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 2,
+  "fields": {
+    "name": "Archivador corporativo Michael Scott Edition",
+    "description": "Archivador de documentos de gran capacidad para organizar informes y documentación",
+    "supplier": 1,
+    "category": 1,
+    "stock": 7,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:11:52.287Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 3,
+  "fields": {
+    "name": "Grapadora de oficina",
+    "description": "Grapadora metálica para uso diario en oficinas y departamentos administrativos",
+    "supplier": 1,
+    "category": 1,
+    "stock": 7,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:12:20.788Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 4,
+  "fields": {
+    "name": "Papel reciclado Schrute Farms",
+    "description": "Papel reciclado fabricado con fibras de origen sostenible. Una opción ecológica para documentos de oficina",
+    "supplier": 1,
+    "category": 1,
+    "stock": 25,
+    "minimum_stock": 8,
+    "created_at": "2026-08-16T04:12:52.521Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 5,
+  "fields": {
+    "name": "Caja de sobres corporativos",
+    "description": "Caja de 250 sobres blancos para correspondencia y documentación empresarial",
+    "supplier": 1,
+    "category": 1,
+    "stock": 30,
+    "minimum_stock": 10,
+    "created_at": "2026-08-16T04:13:48.517Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 6,
+  "fields": {
+    "name": "Reactor Arc portátil",
+    "description": "Fuente de energía compacta de alta eficiencia diseñada para alimentar equipamiento tecnológico avanzado",
+    "supplier": 2,
+    "category": 9,
+    "stock": 6,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:15:39.047Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 7,
+  "fields": {
+    "name": "Módulo de energía Stark",
+    "description": "Módulo energético de alto rendimiento para sistemas electrónicos y maquinaria especializada",
+    "supplier": 2,
+    "category": 9,
+    "stock": 9,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:16:04.680Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 8,
+  "fields": {
+    "name": "Interfaz holográfica",
+    "description": "Sistema de proyección holográfica para visualizar y controlar información digital de forma interactiva",
+    "supplier": 2,
+    "category": 2,
+    "stock": 7,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:16:34.456Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 9,
+  "fields": {
+    "name": "Guante de mantenimiento tecnológico",
+    "description": "Guante especializado con herramientas integradas para trabajos de mantenimiento sobre componentes electrónicos",
+    "supplier": 2,
+    "category": 6,
+    "stock": 14,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:17:09.036Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 10,
+  "fields": {
+    "name": "Sensor multifunción JARVIS",
+    "description": "Sensor compacto capaz de monitorizar temperatura, movimiento, presión y otras variables ambientales",
+    "supplier": 2,
+    "category": 2,
+    "stock": 11,
+    "minimum_stock": 4,
+    "created_at": "2026-08-16T04:17:36.035Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 11,
+  "fields": {
+    "name": "Analizador molecular Alchemax",
+    "description": "Equipo de laboratorio diseñado para analizar la composición y propiedades de diferentes muestras",
+    "supplier": 3,
+    "category": 3,
+    "stock": 8,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:29:13.610Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 12,
+  "fields": {
+    "name": "Kit de investigación genética",
+    "description": "Kit de laboratorio para realizar análisis y experimentos relacionados con material genético",
+    "supplier": 3,
+    "category": 3,
+    "stock": 6,
+    "minimum_stock": 2,
+    "created_at": "2026-08-16T04:29:41.498Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 13,
+  "fields": {
+    "name": "Contenedor de muestras experimentales",
+    "description": "Recipiente especializado para conservar y transportar muestras de laboratorio bajo condiciones controladas",
+    "supplier": 3,
+    "category": 8,
+    "stock": 15,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:30:07.434Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 14,
+  "fields": {
+    "name": "Microscopio de laboratorio avanzado",
+    "description": "Microscopio de alta precisión para observación y análisis de muestras biológicas y materiales",
+    "supplier": 3,
+    "category": 3,
+    "stock": 9,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:30:41.034Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 15,
+  "fields": {
+    "name": "Fórmula experimental A-42",
+    "description": "Compuesto experimental desarrollado para investigación científica y pruebas de laboratorio",
+    "supplier": 3,
+    "category": 3,
+    "stock": 4,
+    "minimum_stock": 2,
+    "created_at": "2026-08-16T04:31:06.383Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 16,
+  "fields": {
+    "name": "Caja de envío interplanetario",
+    "description": "Caja de transporte reforzada para proteger mercancías durante trayectos de larga distancia",
+    "supplier": 4,
+    "category": 4,
+    "stock": 35,
+    "minimum_stock": 10,
+    "created_at": "2026-08-16T04:31:35.360Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 17,
+  "fields": {
+    "name": "Contenedor de carga Planet Express",
+    "description": "Contenedor reutilizable para el transporte y almacenamiento temporal de mercancías.",
+    "supplier": 4,
+    "category": 8,
+    "stock": 4,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:31:59.629Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 18,
+  "fields": {
+    "name": "Etiquetadora de paquetes",
+    "description": "Dispositivo portátil para imprimir y colocar etiquetas identificativas en paquetes y mercancías",
+    "supplier": 4,
+    "category": 4,
+    "stock": 10,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:32:23.966Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 19,
+  "fields": {
+    "name": "Traje de reparto espacial",
+    "description": "Traje de protección diseñado para trabajos de transporte y reparto en entornos con condiciones ambientales adversas",
+    "supplier": 4,
+    "category": 7,
+    "stock": 7,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:32:48.691Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 20,
+  "fields": {
+    "name": "Casco de reparto Planet Express",
+    "description": "Casco protector para personal encargado del transporte y manipulación de mercancías",
+    "supplier": 4,
+    "category": 7,
+    "stock": 12,
+    "minimum_stock": 4,
+    "created_at": "2026-08-16T04:33:20.238Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 21,
+  "fields": {
+    "name": "Caja de botellas Duff",
+    "description": "Caja de 24 botellas de cerveza Duff para distribución y almacenamiento",
+    "supplier": 5,
+    "category": 5,
+    "stock": 40,
+    "minimum_stock": 10,
+    "created_at": "2026-08-16T04:34:15.253Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 22,
+  "fields": {
+    "name": "Barril industrial Duff",
+    "description": "Barril de gran capacidad destinado al almacenamiento y distribución de bebidas",
+    "supplier": 5,
+    "category": 5,
+    "stock": 15,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:34:52.008Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 23,
+  "fields": {
+    "name": "Lata Duff clásica",
+    "description": "Lata individual de cerveza Duff preparada para distribución y consumo.",
+    "supplier": 5,
+    "category": 5,
+    "stock": 27,
+    "minimum_stock": 20,
+    "created_at": "2026-08-16T04:35:44.720Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 24,
+  "fields": {
+    "name": "Máquina embotelladora Duff",
+    "description": "Máquina industrial para el llenado y sellado automatizado de botellas",
+    "supplier": 5,
+    "category": 6,
+    "stock": 5,
+    "minimum_stock": 2,
+    "created_at": "2026-08-16T04:36:12.670Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 25,
+  "fields": {
+    "name": "Caja promocional Duff",
+    "description": "Pack promocional de productos y material publicitario de Duff Brewery",
+    "supplier": 5,
+    "category": 5,
+    "stock": 22,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:36:33.441Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 26,
+  "fields": {
+    "name": "Escáner ambiental industrial",
+    "description": "Dispositivo portátil para medir temperatura, presión, composición atmosférica y otras condiciones ambientales",
+    "supplier": 6,
+    "category": 6,
+    "stock": 8,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:38:10.942Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 27,
+  "fields": {
+    "name": "Linterna de inspección reforzada",
+    "description": "Linterna de alta resistencia diseñada para trabajos de inspección y mantenimiento en instalaciones industriales",
+    "supplier": 6,
+    "category": 6,
+    "stock": 16,
+    "minimum_stock": 5,
+    "created_at": "2026-08-16T04:38:37.371Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 28,
+  "fields": {
+    "name": "Contenedor criogénico",
+    "description": "Contenedor especializado para conservar materiales y muestras a temperaturas extremadamente bajas",
+    "supplier": 6,
+    "category": 8,
+    "stock": 10,
+    "minimum_stock": 2,
+    "created_at": "2026-08-16T04:39:01.619Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 29,
+  "fields": {
+    "name": "Detector de movimiento LV-426",
+    "description": "Dispositivo portátil para detectar movimiento y presencia de objetos en zonas de inspección",
+    "supplier": 6,
+    "category": 7,
+    "stock": 9,
+    "minimum_stock": 3,
+    "created_at": "2026-08-16T04:39:28.982Z"
+  }
+},
+{
+  "model": "inventory.product",
+  "pk": 30,
+  "fields": {
+    "name": "Kit de protección para expediciones",
+    "description": "Conjunto de elementos de protección personal para trabajos de exploración e inspección en entornos industriales",
+    "supplier": 6,
+    "category": 7,
+    "stock": 11,
+    "minimum_stock": 4,
+    "created_at": "2026-08-16T04:39:54.321Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "movement_type": "IN",
+    "quantity": 4,
+    "date": "2026-08-16T07:17:44.902Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "movement_type": "IN",
+    "quantity": 5,
+    "date": "2026-08-16T07:22:31.181Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 3,
+  "fields": {
+    "product": 1,
+    "movement_type": "OUT",
+    "quantity": 6,
+    "date": "2026-08-16T07:22:59.895Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 4,
+  "fields": {
+    "product": 2,
+    "movement_type": "OUT",
+    "quantity": 17,
+    "date": "2026-08-16T08:07:22.450Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 5,
+  "fields": {
+    "product": 2,
+    "movement_type": "IN",
+    "quantity": 6,
+    "date": "2026-08-16T08:19:03.745Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 6,
+  "fields": {
+    "product": 3,
+    "movement_type": "OUT",
+    "quantity": 11,
+    "date": "2026-08-16T08:38:40.122Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 7,
+  "fields": {
+    "product": 23,
+    "movement_type": "OUT",
+    "quantity": 41,
+    "date": "2026-08-16T23:14:24.101Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 8,
+  "fields": {
+    "product": 23,
+    "movement_type": "IN",
+    "quantity": 2,
+    "date": "2026-08-16T23:15:46.362Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 9,
+  "fields": {
+    "product": 23,
+    "movement_type": "OUT",
+    "quantity": 4,
+    "date": "2026-08-16T23:16:19.009Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 10,
+  "fields": {
+    "product": 23,
+    "movement_type": "IN",
+    "quantity": 10,
+    "date": "2026-08-16T23:17:32.105Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 11,
+  "fields": {
+    "product": 1,
+    "movement_type": "IN",
+    "quantity": 1,
+    "date": "2026-08-16T23:28:17.862Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 12,
+  "fields": {
+    "product": 17,
+    "movement_type": "OUT",
+    "quantity": 14,
+    "date": "2026-08-18T02:23:13.978Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 13,
+  "fields": {
+    "product": 17,
+    "movement_type": "IN",
+    "quantity": 10,
+    "date": "2026-08-18T02:24:28.905Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 14,
+  "fields": {
+    "product": 3,
+    "movement_type": "IN",
+    "quantity": 6,
+    "date": "2026-08-18T02:26:11.712Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 15,
+  "fields": {
+    "product": 17,
+    "movement_type": "OUT",
+    "quantity": 9,
+    "date": "2026-08-18T02:27:03.908Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 16,
+  "fields": {
+    "product": 17,
+    "movement_type": "OUT",
+    "quantity": 1,
+    "date": "2026-08-18T02:27:39.576Z"
+  }
+},
+{
+  "model": "inventory.stockmovement",
+  "pk": 17,
+  "fields": {
+    "product": 28,
+    "movement_type": "IN",
+    "quantity": 5,
+    "date": "2026-08-20T18:01:36.326Z"
+  }
+}
+]
